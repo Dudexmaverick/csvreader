@@ -1,28 +1,30 @@
+#from PyPDF2 import PdfReader
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_text_splitters import CharacterTextSplitter
-
-text =""
+import csv 
+text = ""
 loader = CSVLoader(file_path="/home/mariaeduarda/chatlang/transcript_table(1).csv")
 data = loader.load()
-def process_files(loader):
-    text = ""
+print(data)
 
-    for loader  in process_files:
-        csv = loader.load(loader)
-        for csv  in :
-            text += loader.extract_text()
+
+def process_files(arquivo):
+    with open('/home/mariaeduarda/chatlang/transcript_table(1).csv', 'r') as arquivo:
+        leitor_csv = csv.reader(arquivo)
+        for data in leitor_csv:
+            print(data)
+
+#def process_files(files):
+    #text = ""
+
+    #for file in files:
+        #pdf = PdfReader(file)
+        #for page in pdf.pages:
+            #text += page.extract_text()
     
-    return text
+    #return text
 
-def process_files(files):
-    text = ""
 
-    for file in files:
-        pdf = PdfReader(file)
-        for page in pdf.pages:
-            text += page.extract_text()
-    
-    return text
 def create_text_chunks(text):
 
     text_splitter = CharacterTextSplitter(
@@ -33,4 +35,3 @@ def create_text_chunks(text):
     )
     chunks = text_splitter.split_text(text)
     return chunks
-
